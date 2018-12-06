@@ -8,7 +8,7 @@ clear variables; clc
 % Material properties
 props(1) = 0.2;   % C10 (MPa)
 props(2) = 2;       % D1 (MPa^-1)
-props(3) = 0.05;    % k1 (MPa)
+props(3) = 0.01;    % k1 (MPa)
 props(4) = 2;     % k2 (-)
 props(5) = 20;      % theta (degrees)
 props(6) = -20;      % theta (degrees)
