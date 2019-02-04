@@ -26,7 +26,7 @@
  1,
 *Orientation, name=Ori-1
 1., 0., 0., 0., 1., 0.
-3, 0.
+3, 20.
 ** Section: Section-1
 *Solid Section, elset=_PickedSet2, orientation=Ori-1, material=Material-1
 ,
@@ -61,10 +61,8 @@
 ** MATERIALS
 ** 
 *Material, name=Material-1
-*Depvar
-    6,
-*User Material, constants=8
-.2, 2.0, 0.01, 2, 0.0, 20,-20, 1
+*Hyperelastic, NEO HOOKE
+0.2, 2.0
 ** ----------------------------------------------------------------
 ** 
 ** STEP: Stretch
@@ -116,7 +114,7 @@ n8, 3, 3, 0.2
 *Node Output
 U
 *Element Output, directions=YES
-LE, S, SDV
+LE, S
 *EL PRINT
 DG
 *End Step

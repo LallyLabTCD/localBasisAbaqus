@@ -1,10 +1,10 @@
-clear variables; 
+clear variables; clc
 % Script to demonstrate the issues around material objectivity described in
 % the manuscript
 %
 % David Nolan
 %
-% Material properties
+% Material properties for the neo-Hookean constitutive model
 props(1) = 0.2;   % C10 (MPa)
 props(2) = 2;     % D1 (MPa^-1)
 %% Kinematics
@@ -13,24 +13,18 @@ props(2) = 2;     % D1 (MPa^-1)
 % system is implemented.
 FG = [1.10   0.10   0.00
       0.05   0.90   0.15
-      0.20   0.00   1.20];      % Eq. (4);
+      0.20   0.00   1.20];      % Eq. (4)
 
-% Rotation matrix used to change the basis in the reference
-% configuration.
-t=0.45; % 20 degrees in radians
-Q = [cosd(t) -sind(t) 0
-     sind(t)  cosd(t) 0
-       0     0      1];         % Eq. (7)
+% Compute a polar decomposition of the deformation gradient
+[UG, RG]=polardecomp(FG);
 
-% Change the basis of the global deformation gradient
-FG20 = Q'*FG*Q;                 % Eq. (8)
+% Calculate the local deformation gradient
+% N.B. This is what Abaqus passes to the UMAT when you use *orientation and
+% E_i = G_i
+FL = RG'*FG*RG;
 
-% Polar decomposition of the global deformation gradient in the new basis
-[UG20, RG20]=polardecomp(FG20);
-
-% Map the global deformation gradient to the local deformation gradient
-FL20 = RG20'*FG20*RG20;         % Eq. (9)
-[UL20, RL20]=polardecomp(FL20);
+% Get polar decomp of this local deformation gradient
+[UL, RL]=polardecomp(FL);
 
 %% Calculate the stress
 % Calculate the stress in the global coordinate system. Eq. (11)
@@ -40,15 +34,15 @@ pGlob = -trace(sigGlob)/3;
 
 % Calculate the stress in the local coordinate system. Term in curly
 % brackets in Eq. (14)
-[sigLoc] = NeoHooke(FL20,props);
+[sigLoc] = NeoHooke(FL,props);
 % Calculate pressure stress
 pLoc = -trace(sigLoc)/3;
 
 % Calculate the co-rotational stress. Term in curly brackets in Eq. (15)
-[sigGlobU] = NeoHooke(UG20,props);
+[sigGlobU] = NeoHooke(UG,props);
 
-% Change the basis of the local stress back to the global basis. Eq (19)
-stressTrans = Q*RG20*sigLoc*RG20'*Q';
+% Change the basis of the local stress back to the global basis. Eq (14)
+stressTrans = RG*sigLoc*RG';
 
 %% Output
 disp('**** Stress Invariants ****')

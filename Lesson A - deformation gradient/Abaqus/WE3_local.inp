@@ -26,7 +26,7 @@
  1,
 *Orientation, name=Ori-1
 1., 0., 0., 0., 1., 0.
-3, 0.
+3, 20.
 ** Section: Section-1
 *Solid Section, elset=_PickedSet2, orientation=Ori-1, material=Material-1
 ,
