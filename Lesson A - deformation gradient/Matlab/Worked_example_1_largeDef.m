@@ -3,8 +3,8 @@ clear variables
 %% Continuum element where E_i = G_i
 % Basic deformation
 F = [1 0 0
-     0 1.1 0
-     0 0 1/1.1];
+     0 2 0
+     0 0 0.5];
 
 % Rotate by 45 degrees
 t=45;
@@ -29,7 +29,6 @@ Fal = R'*F*R;
 
 % "Classical" local deformation gradient
 Fd = R'*F;
- 
 
 %% Display Results
 clc
@@ -42,11 +41,11 @@ disp('***** Continuum Element: Abaqus Local Basis *****')
 disp(' ')
 disp('Fal = ')
 disp(Fal)
+disp(' +++ N.B. this is not the same as the F returned by WE1_PStress_Ori_largeDef.inp ')
 disp(' ')
 disp('***** Structural Element *****')
 disp(' ')
 disp('Fd = ')
 disp(Fd)
 disp(' ')
-   
    
