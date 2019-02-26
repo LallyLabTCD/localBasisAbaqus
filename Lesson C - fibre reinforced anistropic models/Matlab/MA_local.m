@@ -25,7 +25,8 @@ a02 = [cos(thetar2) sin(thetar2) 0]';
 % Perform polar decomposition of the deformation gradient
 [U,R] = polardecomp(F);
 
-% Fibre orientation vector in the deformed configuration
+% ---> Fibre orientation vector in the deformed configuration. N.B. this is the
+% key difference
 a1 = F*R'*a01; 
 a2 = F*R'*a02;
 

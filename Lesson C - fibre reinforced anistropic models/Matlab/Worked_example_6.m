@@ -38,13 +38,12 @@ FL = RG'*FG*RG;
 % For this example, we set A_E = A_G
 A_E = A_G;
 
-% Change the basis of the fibre vector in the reference configuration from
-% the basis vectors E_i to the basis vectors e_i.
-A_e = RG'*A_E;
+% Convert the Abaqus Local deformation gradient to U
+U = FL*RG';
 
 % Deformed fibre vector in the current configuration in the local basis
 % system e_i.
-a_e = FL*A_e;
+a_e = UL*A_E;
 
 % Calculate the structural tensor using the fibre vector in the current
 % configuration in the local basis system.

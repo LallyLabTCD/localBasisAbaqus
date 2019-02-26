@@ -52,13 +52,12 @@ FL20 = RG20'*FG20*RG20;         % Eq. (9)
 % 30-20 = 10 degrees, to ensure equivalence of the local and global cases.
 A_E = [cosd(10) sind(10) 0]';
 
-% Change the basis of the fibre vector in the reference configuration from
-% the basis vectors E_i to the basis vectors e_i
-A_e = RG20'*A_E;
+% Convert the Abaqus Local deformation gradient to U
+U20 = FL20*RG20';
 
 % Deformed fibre vector in the current configuration in the local basis
 % system e_i
-a_e = FL20*A_e;
+a_e = U20*A_E;
 
 % Calculate the structural tensor using the fibre vector in the current
 % configuration 
