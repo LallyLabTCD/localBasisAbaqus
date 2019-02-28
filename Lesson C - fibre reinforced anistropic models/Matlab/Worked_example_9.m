@@ -26,17 +26,17 @@ FG1 = [1.10   0.10   0.00
 
 % Calculate the local deformation gradient
 % FL is what Abaqus returns to the UMAT when you use *orientation
-FL1 = RG1'*FG1*RG1;
+Fal1 = RG1'*FG1*RG1;
 
 % Get polar decomp of this local dgrad
-[UL1, RL1]=polardecomp(FL1);
+[UL1, RL1]=polardecomp(Fal1);
 
 %% Calculate the stress in the global coordinate system
 [sigGlob1] = MA_global(FG1,props);
 pGlob1 = -trace(sigGlob1)/3;
 
 %% Calculate the stress in the local coordinate system
-[sigLoc1] = MA_local(FL1,props);
+[sigLoc1] = MA_local(Fal1,props);
 pLoc1 = -trace(sigLoc1)/3;
 
 %% Calculate the co-rotational stress
@@ -86,7 +86,7 @@ FG2 = Phi*FG1;
 
 % Calculate the local deformation gradient
 % FL is what Abaqus returns to the UMAT when you use *orientation
-FL2 = RG2'*FG2*RG2;
+Fal2 = RG2'*FG2*RG2;
 
 
 %% Calculate the stress in the global coordinate system
@@ -94,7 +94,7 @@ FL2 = RG2'*FG2*RG2;
 pGlob2 = -trace(sigGlob2)/3;
 
 %% Calculate the stress in the local coordinate system
-[sigLoc2] = MA_local(FL2,props);
+[sigLoc2] = MA_local(Fal2,props);
 pLoc2 = -trace(sigLoc1)/3;
 
 %% Calculate the co-rotational stress

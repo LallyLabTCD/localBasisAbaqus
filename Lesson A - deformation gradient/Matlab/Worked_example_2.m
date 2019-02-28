@@ -18,8 +18,8 @@ FG = [1.10   0.10   0.00
 
 % Calculate the local deformation gradient
 % This is the same transform that Abaqus uses when you use *orientation
-FL = RG'*FG*RG;                 % Eq. (3) & (6)
-[UL, RL]=polardecomp(FL);       % Eq. (1)
+Fal = RG'*FG*RG;                 % Eq. (3) & (6)
+[UL, RL]=polardecomp(Fal);       % Eq. (1)
 
 % Note the the eigenvalues of the right stretch tensor U are the same. We
 % expect to see this invariance.

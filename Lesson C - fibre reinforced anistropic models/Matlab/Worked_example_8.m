@@ -25,10 +25,10 @@ FG = [1.10   0.10   0.00
 
 % Calculate the local deformation gradient
 % FL is what Abaqus returns to the UMAT when you use *orientation
-FL = RG'*FG*RG;
+Fal = RG'*FG*RG;
 
 % Get polar decomp of this local dgrad
-[UL, RL]=polardecomp(FL);
+[UL, RL]=polardecomp(Fal);
 
 %% Calculate the stress in the global coordinate system
 [sigGlob] = MA_global(FG,props);
@@ -36,7 +36,7 @@ pGlob = -trace(sigGlob)/3;
 
 
 %% Calculate the stress in the local coordinate system
-[sigLoc] = MA_local(FL,props);
+[sigLoc] = MA_local(Fal,props);
 
 pLoc = -trace(sigLoc)/3;
 

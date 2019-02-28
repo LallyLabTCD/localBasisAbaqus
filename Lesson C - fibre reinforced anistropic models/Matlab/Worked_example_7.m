@@ -42,7 +42,7 @@ aoaG20 = Q'*aoaG*Q;
 [UG20, RG20]=polardecomp(FG20);
 
 % Map the global deformation gradient to the local deformation gradient
-FL20 = RG20'*FG20*RG20;         % Eq. (9)
+Fal20 = RG20'*FG20*RG20;         % Eq. (9)
 
 % Define the fibre vector in the reference configuration with respect to
 % the local coordinate basis vectors E_i.
@@ -53,7 +53,7 @@ FL20 = RG20'*FG20*RG20;         % Eq. (9)
 A_E = [cosd(10) sind(10) 0]';
 
 % Convert the Abaqus Local deformation gradient to U
-U20 = FL20*RG20';
+U20 = Fal20*RG20';
 
 % Deformed fibre vector in the current configuration in the local basis
 % system e_i
@@ -61,7 +61,7 @@ a_e = U20*A_E;
 
 % Calculate the structural tensor using the fibre vector in the current
 % configuration 
-aoaL20 = FL20*RG20'*A_E*A_E'*RG20*FL20';
+aoaL20 = Fal20*RG20'*A_E*A_E'*RG20*Fal20';
 
 % Alternatively: aoaL20 = a_e*a_e'
 

@@ -1,6 +1,6 @@
 clear variables; 
 % Script to demonstrate the issues around material objectivity described in
-% the manuscript
+% the manuscript. This is an isotropic material model example where E \neq G
 %
 % David Nolan
 %

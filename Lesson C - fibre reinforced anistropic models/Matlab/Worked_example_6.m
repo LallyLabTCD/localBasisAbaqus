@@ -31,7 +31,7 @@ aoaG = a_G*a_G';
 
 % Calculate the local deformation gradient
 % This is the same transform that Abaqus uses when you use *orientation.
-FL = RG'*FG*RG;
+Fal = RG'*FG*RG;
 
 % Define the fibre vector in the reference configuration with respect to
 % the local E_1 basis vector.
@@ -39,7 +39,7 @@ FL = RG'*FG*RG;
 A_E = A_G;
 
 % Convert the Abaqus Local deformation gradient to U
-U = FL*RG';
+U = Fal*RG';
 
 % Deformed fibre vector in the current configuration in the local basis
 % system e_i.
@@ -47,7 +47,7 @@ a_e = UL*A_E;
 
 % Calculate the structural tensor using the fibre vector in the current
 % configuration in the local basis system.
-aoaL = FL*RG'*A_E*(A_E')*RG*FL';
+aoaL = Fal*RG'*A_E*(A_E')*RG*Fal';
 % Alternatively aoaL = a_e*a_e';
 
 % Calculate the anisotropic invariant I4 and verify that they are identical.

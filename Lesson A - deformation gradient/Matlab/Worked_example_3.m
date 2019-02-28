@@ -27,13 +27,13 @@ FG20 = Q'*FG*Q;                 % Eq. (8)
 [UG20, RG20]=polardecomp(FG20);
 
 % Map the global deformation gradient to the local deformation gradient
-FL20 = RG20'*FG20*RG20;         % Eq. (9)
-[UL20, RL20]=polardecomp(FL20);
+Fal20 = RG20'*FG20*RG20;         % Eq. (9)
+[Ual20, RL20]=polardecomp(Fal20);
 
 % Note the the eigenvalues of the right stretch tensor U are the same. We
 % expect to see this invariance.
 [lambdaGvec, lambdaGval] = eigs(UG20);
-[lambdaLvec, lambdaLval] = eigs(UL20);
+[lambdaLvec, lambdaLval] = eigs(Ual20);
 
 %% Basis vectors
 % Global basis vectors e0G

@@ -1,10 +1,14 @@
 clear variables
+% Script to demonstrate the difference between structural elements (e.g. 
+% shells and membranes) and continuum elements (here, plane stress).
+%
+% David Nolan
 
 %% Continuum element where E_i = G_i
 % Basic deformation
-F = [1 0 0
+F = [1 0   0
      0 1.1 0
-     0 0 1/1.1];
+     0 0   1/1.1];
 
 % Rotate by 45 degrees
 t=45;

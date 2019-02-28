@@ -1,6 +1,6 @@
 clear variables; clc
 % Script to demonstrate the issues around material objectivity described in
-% the manuscript
+% the manuscript. This is an example using an isotropic material model.
 %
 % David Nolan
 %
@@ -21,10 +21,10 @@ FG = [1.10   0.10   0.00
 % Calculate the local deformation gradient
 % N.B. This is what Abaqus passes to the UMAT when you use *orientation and
 % E_i = G_i
-FL = RG'*FG*RG;
+Fal = RG'*FG*RG;
 
 % Get polar decomp of this local deformation gradient
-[UL, RL]=polardecomp(FL);
+[UL, RL]=polardecomp(Fal);
 
 %% Calculate the stress
 % Calculate the stress in the global coordinate system. Eq. (11)
@@ -34,7 +34,7 @@ pGlob = -trace(sigGlob)/3;
 
 % Calculate the stress in the local coordinate system. Term in curly
 % brackets in Eq. (14)
-[sigLoc] = NeoHooke(FL,props);
+[sigLoc] = NeoHooke(Fal,props);
 % Calculate pressure stress
 pLoc = -trace(sigLoc)/3;
 
