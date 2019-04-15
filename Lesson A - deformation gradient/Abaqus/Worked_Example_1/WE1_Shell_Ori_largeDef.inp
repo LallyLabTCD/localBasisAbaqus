@@ -13,13 +13,13 @@
       4,           0.,           1.,           0.
 *Element, type=S4R
 1, 1, 2, 3, 4
-*Elset, elset=CELL
+*Elset, elset=ALL_ELS
  1,
 *Orientation, name=Ori-1
           1.,           0.,           0.,           0.,           1.,           0.
 3, 0.
 ** Section: shellSection
-*Shell Section, elset=CELL, material=ELAS, orientation=Ori-1
+*Shell Section, elset=ALL_ELS, material=ELAS, orientation=Ori-1
 0.001, 5
 *End Part
 **  
@@ -30,25 +30,15 @@
 **  
 *Instance, name=PART-1-1, part=PART-1
 *End Instance
-**  
-*Nset, nset=ALL, instance=PART-1-1, generate
- 1,  4,  1
+** 
 *Nset, nset=N1, instance=PART-1-1
- 1, 3, 4
-*Nset, nset=_M5, internal, instance=PART-1-1
  1,
-*Nset, nset=_M6, internal, instance=PART-1-1
- 4,
-*Nset, nset=_M7, internal, instance=PART-1-1
+*Nset, nset=N2, instance=PART-1-1
  2,
-*Nset, nset=_M8, internal, instance=PART-1-1
+*Nset, nset=N3, instance=PART-1-1
  3,
-*Nset, nset=_M9, internal, instance=PART-1-1
+*Nset, nset=N4, instance=PART-1-1
  4,
-*Nset, nset=_M10, internal, instance=PART-1-1
- 3,
-*Nset, nset=_M11, internal, instance=PART-1-1
- 2,
 *End Assembly
 ** 
 ** MATERIALS
@@ -61,8 +51,8 @@
 ** 
 ** Name: Disp-BC-1 Type: Displacement/Rotation
 *Boundary
-_M5, 1, 1
-_M5, 2, 2
+N1, 1, 1
+N1, 2, 2
 ** ----------------------------------------------------------------
 ** 
 ** STEP: Step-1
@@ -75,34 +65,15 @@ _M5, 2, 2
 ** 
 ** Name: Disp-BC-2 Type: Displacement/Rotation
 *Boundary
-_M7,1,1,-0.292893218813452
-_M7,2,2,-0.707106781186548
+N2,1,1,-0.292893218813452
+N2,2,2,-0.707106781186548
 **
-**3,1,1,0.414213562373095
-**3,2,2,-1
-_M8,1,1,1.121320343559643
-_M8,2,2,-0.292893218813452
+N3,1,1,1.121320343559643
+N3,2,2,-0.292893218813452
 **
-**4,1,1,0.707106781186548
-**4,2,2,-0.292893218813452
-_M9,1,1,1.414213562373095
-_M9,2,2,0.414213562373095
-** 
-** CONTROLS
-** 
-*Controls, reset
-*Controls, analysis=discontinuous
-*Controls, parameters=line search
-10, , , , 0.01
-*Controls, parameters=field, field=displacement
-10000., 0.02, , , , , , 
-*Controls, parameters=field, field=hydrostatic fluid pressure
-10000., 0.05, , , , , , 
-*Controls, parameters=field, field=rotation
-10000., 0.05, , , , , , 
-*Controls, parameters=field, field=electrical potential
-10000., 0.05, , , , , 0.1, 
-** 
+N4,1,1,1.414213562373095
+N4,2,2,0.414213562373095
+**
 ** OUTPUT REQUESTS
 ** 
 *Restart, write, frequency=0

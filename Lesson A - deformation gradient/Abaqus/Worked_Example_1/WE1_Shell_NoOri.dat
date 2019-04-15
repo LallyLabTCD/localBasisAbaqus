@@ -1,6 +1,6 @@
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 04-Feb-2019   Time 20:51:05
+   Abaqus 3DEXPERIENCE R2017x                                  Date 10-Apr-2019   Time 16:00:24
    For use by UNIVERSITY OF DUBLIN under license from Dassault Systemes or its subsidiary.
 
 
@@ -80,31 +80,15 @@
   *Heading
   *Node
   *Element, type=S4R
-  *Elset, elset=ASSEMBLY_PART-1-1_CELL
-  *Nset, nset=ASSEMBLY_ALL
+  *Elset, elset=ASSEMBLY_PART-1-1_ALL_ELS
   *Nset, nset=ASSEMBLY_N1
-  *Nset, nset=ASSEMBLY__M10
-  *Nset, nset=ASSEMBLY__M11
-  *Nset, nset=ASSEMBLY__M5
-  *Nset, nset=ASSEMBLY__M6
-  *Nset, nset=ASSEMBLY__M7
-  *Nset, nset=ASSEMBLY__M8
-  *Nset, nset=ASSEMBLY__M9
+  *Nset, nset=ASSEMBLY_N2
+  *Nset, nset=ASSEMBLY_N3
+  *Nset, nset=ASSEMBLY_N4
   *material, name=ELAS
   *hyperelastic, ogden
-  *orientation, name=ASSEMBLY_PART-1-1_ORI-1
-  *shellsection, elset=ASSEMBLY_PART-1-1_CELL, material=ELAS
-  *shellsection, elset=ASSEMBLY_PART-1-1_CELL, material=ELAS
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
+  *shellsection, elset=ASSEMBLY_PART-1-1_ALL_ELS, material=ELAS
+  *shellsection, elset=ASSEMBLY_PART-1-1_ALL_ELS, material=ELAS
   *boundary
   *boundary
   *boundary
@@ -125,18 +109,6 @@
   *Step, name=Step-1, nlgeom=YES, inc=1000
   *static
   *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *controls, reset
-  *controls, analysis=DISCONTINUOUS
-  *controls, parameters=LINESEARCH
-  *controls, parameters=FIELD, field=DISPLACEMENT
-  *controls, parameters=FIELD, field=HYDROSTATICFLUIDPRESSURE
-  *controls, parameters=FIELD, field=ROTATION
-  *controls, parameters=FIELD, field=ELECTRICALPOTENTIAL
   *output, field
   *nodeoutput
   *elementoutput, directions=YES
@@ -152,11 +124,6 @@
   *boundary
   *Step, name=Step-1, nlgeom=YES, inc=1000
   *static
-  *boundary
-  *boundary
-  *boundary
-  *boundary
-  *boundary
   *boundary
   *endstep
 
@@ -178,24 +145,29 @@ Number of instances: 1
 
 ASSEMBLY LEVEL
   node sets:
-    ALL:
-      instance name: PART-1-1
-      number of nodes: 4
-      nodes: 
-        1 2 3 4
-
     N1:
       instance name: PART-1-1
-      number of nodes: 3
+      number of nodes: 1
       nodes: 
-        1 3 4
+        1
 
+    N2:
+      instance name: PART-1-1
+      number of nodes: 1
+      nodes: 
+        2
 
+    N3:
+      instance name: PART-1-1
+      number of nodes: 1
+      nodes: 
+        3
 
-
-
-
-
+    N4:
+      instance name: PART-1-1
+      number of nodes: 1
+      nodes: 
+        4
 
   element sets:
   Surfaces:
@@ -205,7 +177,7 @@ INSTANCE LEVEL
 
   element sets:
     Instance name: PART-1-1
-      element set name: CELL
+      element set name: ALL_ELS
         number of elements: 1
         elements: 
           1
@@ -265,12 +237,12 @@ LOCAL TO GLOBAL NODE AND ELEMENT MAPS
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =  0.10000    
-       SYSTEM TIME (SEC)    =  0.20000    
-       TOTAL CPU TIME (SEC) =  0.30000    
-       WALLCLOCK TIME (SEC) =          1
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 04-Feb-2019   Time 20:51:08
+   Abaqus 3DEXPERIENCE R2017x                                  Date 10-Apr-2019   Time 16:00:26
    For use by UNIVERSITY OF DUBLIN under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -519,6 +491,6 @@ LOCAL TO GLOBAL NODE AND ELEMENT MAPS
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =  0.20000    
-       SYSTEM TIME (SEC)    =  0.20000    
-       TOTAL CPU TIME (SEC) =  0.40000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.30000    
        WALLCLOCK TIME (SEC) =          0

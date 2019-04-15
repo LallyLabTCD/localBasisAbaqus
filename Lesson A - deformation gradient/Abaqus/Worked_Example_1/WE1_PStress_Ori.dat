@@ -1,6 +1,6 @@
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 04-Feb-2019   Time 20:45:51
+   Abaqus 3DEXPERIENCE R2017x                                  Date 10-Apr-2019   Time 15:46:32
    For use by UNIVERSITY OF DUBLIN under license from Dassault Systemes or its subsidiary.
 
 
@@ -79,16 +79,17 @@
 
   *Heading
   *node,nset=all
-  *element, type=CPS4,elset=cell
-  *Nset, nset=n1
-  *Nset, nset=n1
-  *Nset, nset=n1
-  *Nset, nset=n1
+  *element, type=CPS4
+  *Elset, elset=ALL_ELS
+  *Nset, nset=N1
+  *Nset, nset=N2
+  *Nset, nset=N3
+  *Nset, nset=N4
   *Material, name=elas
   *hyperelastic,ogden
   *Orientation, name=Ori-1
-  *Solid Section, elset=cell, material=elas,orientation=Ori-1
-  *Solid Section, elset=cell, material=elas,orientation=Ori-1
+  *Solid Section, elset=ALL_ELS, material=elas,orientation=Ori-1
+  *Solid Section, elset=ALL_ELS, material=elas,orientation=Ori-1
   *Boundary
   *Boundary
   *Boundary
@@ -109,13 +110,6 @@
   *Step, name=Step-1, nlgeom=YES, inc=1000
   *Static
   *Boundary
-  *Controls, reset
-  *Controls, analysis=discontinuous
-  *Controls, parameters=line search
-  *Controls, parameters=field, field=displacement
-  *Controls, parameters=field, field=hydrostatic fluid pressure
-  *Controls, parameters=field, field=rotation
-  *Controls, parameters=field, field=electrical potential
   *Output, field,  frequency=1
   *Element Output, directions=YES
   *EL PRINT
@@ -150,13 +144,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =  0.10000    
-       SYSTEM TIME (SEC)    =  0.10000    
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.20000    
        TOTAL CPU TIME (SEC) =  0.20000    
        WALLCLOCK TIME (SEC) =          1
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 04-Feb-2019   Time 20:45:54
+   Abaqus 3DEXPERIENCE R2017x                                  Date 10-Apr-2019   Time 15:46:35
    For use by UNIVERSITY OF DUBLIN under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
