@@ -10,10 +10,10 @@ F = [1 0   0
      0 1.1 0
      0 0   1/1.1];
 
-% Rotate by 45 degrees
-t=45;
-T = [cosd(t)   sind(t) 0
-     -sind(t)  cosd(t) 0
+% Rotate by -45 degrees
+t=-45;
+T = [cosd(t) -sind(t) 0
+     sind(t)  cosd(t) 0
        0         0    1];
 
 % Rotate by 45 degrees. DG in the global basis
