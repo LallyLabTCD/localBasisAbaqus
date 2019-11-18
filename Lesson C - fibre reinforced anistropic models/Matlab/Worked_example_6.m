@@ -43,7 +43,7 @@ U = Fal*RG';
 
 % Deformed fibre vector in the current configuration in the local basis
 % system e_i.
-a_e = UL*A_E;
+a_e = U*A_E;
 
 % Calculate the structural tensor using the fibre vector in the current
 % configuration in the local basis system.
